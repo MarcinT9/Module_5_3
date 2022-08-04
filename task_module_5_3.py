@@ -5,7 +5,7 @@ class BaseContact():
   def __init__(self, first_name, last_name, phone_number, email):
     self.first_name = first_name
     self.last_name = last_name
-    self.company = phone_number
+    self.phone_number = phone_number
     self.email = email
 
   def __str__(self):
@@ -36,6 +36,7 @@ class BusinessContact(BaseContact):
 
   def __repr__(self):
     return f'BaseContact(first_name={self.first_name}, last_name={self.last_name}, phone_number={self.phone_number}, email={self.email}, position={self.position}, company={self.company}, business_phone={self.business_phone})'
+  
   def contact(self):
     return f'Wybieram numer {self.business_phone} i dzwonię do {self.first_name} {self.last_name}'
 
@@ -48,9 +49,30 @@ class BusinessContact(BaseContact):
 
 def create_contacts(type, value):
   
+  for i in range(choice2):
+    if choice == 1:
+      fake_card = BaseContact(first_name=fake.first_name(), last_name=fake.last_name(), phone_number=fake.phone_number(), email=fake.email())
+      print(fake_card.contact())
+      print(f'Długość imienia i nazwiska wynosi {fake_card.len_adressee} znaków.')
 
+    elif choice == 2:
+      fake_card2 = BusinessContact(first_name=fake.first_name(), last_name=fake.last_name(), phone_number=fake.phone_number(), email=fake.email(), position=fake.job(), company=fake.company(), business_phone=fake.phone_number())
+      print(fake_card2.contact())
+      print(f'Długość imienia i nazwiska wynosi {fake_card2.len_adressee} znaków.')
+
+    else:
+      print('Niepoprawny wybór!')
 
 if __name__ == '__main__':
+  choice = int(input('Wybierz rodzaj wyzytówki: 1 - Prywatna, 2 - Biznesowa: '))
+  
+  if choice not in {1, 2}:
+    print('Niepoprawny wybór!')
+  else:  
+    choice2 = int(input('Podaj ilość wizytówek: '))
+
+  create_contacts(choice, choice2)
+
 
 
   

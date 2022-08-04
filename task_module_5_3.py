@@ -17,8 +17,6 @@ class BaseContact():
   def contact(self):
     return f'Wybieram numer {self.phone_number} i dzwonię do {self.first_name} {self.last_name}'
 
-    self._len_adressee = 0
-
   @property
   def len_adressee(self):
     self._len_adressee = len(self.first_name) + len(self.last_name) + 1
@@ -40,14 +38,7 @@ class BusinessContact(BaseContact):
   def contact(self):
     return f'Wybieram numer {self.business_phone} i dzwonię do {self.first_name} {self.last_name}'
 
-    self._len_adressee = 0
-
-  @property
-  def len_adressee(self):
-    self._len_adressee = len(self.first_name) + len(self.last_name) + 1
-    return self._len_adressee
-
-def create_contacts(type, value):
+def create_contacts(choice, choice2):
   
   for i in range(choice2):
     if choice == 1:
@@ -60,18 +51,14 @@ def create_contacts(type, value):
       print(fake_card2.contact())
       print(f'Długość imienia i nazwiska wynosi {fake_card2.len_adressee} znaków.')
 
-    else:
-      print('Niepoprawny wybór!')
-
 if __name__ == '__main__':
   choice = int(input('Wybierz rodzaj wyzytówki: 1 - Prywatna, 2 - Biznesowa: '))
-  
   if choice not in {1, 2}:
     print('Niepoprawny wybór!')
   else:  
     choice2 = int(input('Podaj ilość wizytówek: '))
 
-  create_contacts(choice, choice2)
+    create_contacts(choice, choice2)
 
 
 
